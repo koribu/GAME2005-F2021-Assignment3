@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8452451231158015313}
   - component: {fileID: 3247664791065567601}
   - component: {fileID: 5330734386462835097}
-  - component: {fileID: 2064089184222494629}
+  - component: {fileID: 2051966376633050994}
   m_Layer: 0
   m_Name: purpleSphere
   m_TagString: Untagged
@@ -83,16 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2064089184222494629
-SphereCollider:
+--- !u!114 &2051966376633050994
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8058074932797181168}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96bb6dadd4faa564c8e507a0d1a1147e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 1
+  velocity: {x: 0, y: 0, z: 0}
+  physicSystem: {fileID: 0}
+  gravityScale: 1

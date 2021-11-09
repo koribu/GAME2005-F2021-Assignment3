@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8464204549314401044}
   - component: {fileID: 3254346911357626164}
   - component: {fileID: 5314621411418834908}
-  - component: {fileID: 2062323727744596448}
   m_Layer: 0
   m_Name: redSphere
   m_TagString: Untagged
@@ -83,16 +82,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2062323727744596448
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8065892887176858293}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
