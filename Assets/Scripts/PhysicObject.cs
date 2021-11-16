@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PhysicObject : MonoBehaviour
 {
     public float mass = 1.0f;
@@ -9,6 +10,8 @@ public class PhysicObject : MonoBehaviour
 
     public PhysicSystem physicSystem;
     public float gravityScale = 1.0f;
+
+    PhysicColliderShape colliderShape = PhysicColliderShape.Shere;
 
     // Start is called before the first frame update
     void Start()
