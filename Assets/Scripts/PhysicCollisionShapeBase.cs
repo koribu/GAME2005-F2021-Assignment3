@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PhysicColliderShape
 {
-    Shere = 0,
+    Sphere = 0,
     Plane,
     AABB
 }

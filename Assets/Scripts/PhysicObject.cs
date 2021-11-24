@@ -11,7 +11,7 @@ public class PhysicObject : MonoBehaviour
     public PhysicSystem physicSystem;
     public float gravityScale = 1.0f;
 
-    PhysicColliderShape colliderShape = PhysicColliderShape.Shere;
+    PhysicColliderShape colliderShape = PhysicColliderShape.Sphere;
 
     // Start is called before the first frame update
     void Start()

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8464204549314401044}
   - component: {fileID: 3254346911357626164}
   - component: {fileID: 5314621411418834908}
+  - component: {fileID: 5660653725250428399}
+  - component: {fileID: -9203217041804396056}
   m_Layer: 0
   m_Name: redSphere
   m_TagString: Untagged
@@ -82,3 +84,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5660653725250428399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8065892887176858293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97861691b43eb9446a0667a42b3911c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.5
+--- !u!114 &-9203217041804396056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8065892887176858293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96bb6dadd4faa564c8e507a0d1a1147e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 1
+  velocity: {x: 0, y: 0, z: 0}
+  physicSystem: {fileID: 0}
+  gravityScale: 1

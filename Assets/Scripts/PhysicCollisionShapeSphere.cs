@@ -8,6 +8,6 @@ public class PhysicCollisionShapeSphere : PhysicCollisionShapeBase
 
     public override PhysicColliderShape GetColliderShape()
     {
-        return PhysicColliderShape.Shere;
+        return PhysicColliderShape.Sphere;
     }
 }

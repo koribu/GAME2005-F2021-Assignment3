@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1437102397842041902}
   - component: {fileID: 5453502303506110478}
   - component: {fileID: 3406458780912974054}
+  - component: {fileID: -7768381200728347876}
+  - component: {fileID: -788368182952740391}
   m_Layer: 0
   m_Name: greenSphere
   m_TagString: Untagged
@@ -82,3 +84,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-7768381200728347876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677992876794918287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96bb6dadd4faa564c8e507a0d1a1147e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 1
+  velocity: {x: 0, y: 0, z: 0}
+  physicSystem: {fileID: 0}
+  gravityScale: 1
+--- !u!114 &-788368182952740391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677992876794918287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97861691b43eb9446a0667a42b3911c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.5
