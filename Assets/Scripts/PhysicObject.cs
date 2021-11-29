@@ -11,6 +11,9 @@ public class PhysicObject : MonoBehaviour
     public PhysicSystem physicSystem;
     public float gravityScale = 1.0f;
 
+    //if toggled true, then physic system will not move whis object
+    public bool lockPosition = false;
+
     PhysicColliderShape colliderShape = PhysicColliderShape.Sphere;
 
     // Start is called before the first frame update
@@ -23,9 +26,9 @@ public class PhysicObject : MonoBehaviour
         }    
     }
 
-    // Update is called once per frame
+ /*   // Update is called once per frame
     void Update()
     {
         transform.position = transform.position + velocity * Time.deltaTime;
-    }
+    }*/
 }

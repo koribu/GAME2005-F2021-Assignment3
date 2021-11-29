@@ -9,12 +9,14 @@ public enum PhysicColliderShape
     AABB
 }
 
+[RequireComponent(typeof(PhysicObject))]//Unity-specific Attribute to make sure this component requires to have another on the same gameobject work
 public abstract class PhysicCollisionShapeBase : MonoBehaviour
 {
-    private PhysicColliderShape shape;
+    public PhysicObject physicObject;
 
     void Start()
     {
+        physicObject = GetComponent<PhysicObject>();
         FindObjectOfType<PhysicSystem>().physicColliderShapes.Add(this);
     }
 
