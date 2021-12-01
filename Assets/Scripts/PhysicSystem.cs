@@ -8,8 +8,6 @@ public class PhysicSystem : MonoBehaviour
     public List<PhysicObject> physicObjects = new List<PhysicObject>();
     public List<PhysicCollisionShapeBase> physicColliderShapes = new List<PhysicCollisionShapeBase>();
 
-    [SerializeField]
-    float collisionEnergyLoss = .6f;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -97,6 +95,14 @@ public class PhysicSystem : MonoBehaviour
         a.transform.position += translationA;
         b.transform.position += translationB;
 
+        CollisionInfo collisionInfo;
+        collisionInfo.colliderA = a;
+        collisionInfo.colliderB = b;
+        collisionInfo.collisionNormalAtoB = collisioNormalAtoB;
+        collisionInfo.contactPoint = a.transform.position + collisioNormalAtoB * a.radius;
+
+        ApplyVelocityResponse(collisionInfo);
+
     }
 
     //In C++: computeMovementScalar(float &mtvScalarA)
@@ -128,13 +134,17 @@ public class PhysicSystem : MonoBehaviour
     }
     void SpherePlaneCollision(PhysicCollisionShapeSphere a, PhysicCollisionShapePlane b)
     {
-  
-
+ 
         Vector3 fromPlaneToSphereCenter = a.transform.position - b.transform.position;
+
+        //use dot product to find the length of the projection of the center of the sphere sphere onto the plane normal
+        //This gives the shortest distance from the plane to the center of the sphere
+        //The sign is negative, they point in opposite directions
+        //if the sign is positive they are at least somewhat in the same d irection
 
         float dot = Vector3.Dot(fromPlaneToSphereCenter, b.GetNormal());
 
-        float distanceFromPlaneToSphereCenter = Mathf.Abs(dot);
+        float distanceFromPlaneToSphereCenter = dot;
 
        //bool isOverlapping = distanceFromPlaneToSphereCenter <= a.radius || (distanceFromPlaneToSphereCenter - Mathf.Abs(Vector3.Dot(a.GetComponent<PhysicObject>().velocity,Vector3.up))) <= a.radius;
        
@@ -149,10 +159,32 @@ public class PhysicSystem : MonoBehaviour
 
             Vector3 aVec = a.GetComponent<PhysicObject>().velocity;
 
-          /*  a.GetComponent<PhysicObject>().velocity = new Vector3(aVec.x + 2 * dot * b.GetNormal().x , aVec.y + 2 * dot * b.GetNormal().y , aVec.z + 2 * dot * b.GetNormal().z );
-            a.GetComponent<PhysicObject>().veilocity = new Vector3(a.GetComponent<PhysicObject>().velocity.x * collisionEnergyLoss, a.GetComponent<PhysicObject>().velocity.y * collisionEnergyLoss, a.GetComponent<PhysicObject>().velocity.z * collisionEnergyLoss);
-           // a.GetComponent<PhysicObject>().velocity = a.GetComponent<PhysicObject>().velocity - 2*dot* b.GetNormal();
-            //a.GetComponent<PhysicObject>().velocity = - aVec  2 * Vector3.Dot(aVec, Vector3.Normalize(fromPlaneToSphereCenter)) *.3f* fromPlaneToSphereCenter;
-      */  }
+            a.GetComponent<PhysicObject>().velocity += -aVec + 2 * dot * b.GetNormal() /** a.physicObject.elasticityCollision*/;
+;
+        }
+    }
+
+    void ApplyVelocityResponse(CollisionInfo collisionInfo)
+    {
+        //TODO: bounce!
+        //Do something with restitution, mass and velocity
+        //will use normal and contact point
+        Vector3 vecA = collisionInfo.colliderA.physicObject.velocity;
+        Vector3 vecB = collisionInfo.colliderB.physicObject.velocity;
+
+        float massA = collisionInfo.colliderA.physicObject.mass;
+        float massB = collisionInfo.colliderB.physicObject.mass;
+
+        // calculating the response = firstVec - 2(dot(firstVec,normal))*normal
+        Vector3 response = vecA - 2 * Vector3.Dot(vecA, collisionInfo.collisionNormalAtoB) * collisionInfo.collisionNormalAtoB ;
+
+        //applying the response according to mass
+        collisionInfo.colliderA.physicObject.velocity += response * (massB / (2 * massA)) * collisionInfo.colliderA.physicObject.elasticityCollision;
+        collisionInfo.colliderB.physicObject.velocity -= response * (massA / (2 * massB)) * collisionInfo.colliderB.physicObject.elasticityCollision; 
+ 
+
     }
 }
+
+
+
