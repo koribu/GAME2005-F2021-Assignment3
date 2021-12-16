@@ -11,10 +11,12 @@ public class PhysicObject : MonoBehaviour
     public PhysicSystem physicSystem;
     public float gravityScale = 1.0f;
 
-    public float elasticityCollision = 1.0f;
+   // [Range(0,1)]
+    public float elasticity = 0.6f;
     //if toggled true, then physic system will not move whis object
     public bool lockPosition = false;
 
+    public PhysicCollisionShapeBase shape;
     //PhysicColliderShape colliderShape = PhysicColliderShape.Sphere;
 
     // Start is called before the first frame update
@@ -24,7 +26,9 @@ public class PhysicObject : MonoBehaviour
         if(physicSystem)
         {
             physicSystem.physicObjects.Add(this);
-        }    
+        }
+
+        shape = GetComponent<PhysicCollisionShapeBase>();
     }
 
  /*   // Update is called once per frame
